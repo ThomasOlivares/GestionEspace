@@ -1,24 +1,24 @@
 #include <iostream>
 #include <string>
-#include "destructeur.h"
+#include "destroyeur.h"
 
 using namespace std;
 
-Destructeur::Destructeur() : Vaisseau()
+Destroyeur::Destroyeur() : Vaisseau()
 {
     metalUp = 60000;
     cristalUp = 50000;
     deuteriumUp = 15000;
 }
 
-Destructeur::~Destructeur(){
+Destroyeur::~Destroyeur(){
 	
 }
 
-string Destructeur::getNom(){
+string Destroyeur::getNom(){
     return "destructeur";
 }
 
-int Destructeur::getNum(){
+int Destroyeur::getNum(){
 	return 6;
 }

@@ -15,8 +15,8 @@
 
 #define nbJoueurs 4
 #define nbPlanetes 4
-#define nbBatiments 14
-#define nbVaisseaux 14
+#define nbBatiments 13
+#define nbVaisseaux 15
 #define nbRecherches 16
 #define sizeFlotte 20
 #define sizePlanete 25

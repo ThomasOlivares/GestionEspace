@@ -19,7 +19,8 @@ class Construction
         virtual int getCristal();
         virtual int getDeuterium();
         int getTemps();
-        void setTemps(int nv);
+        float getTempsHeure();
+        void setTemps(float nv);
         void setBouton(int x, int y);
         virtual std::string getType();
         Bouton* getBoutonUp();

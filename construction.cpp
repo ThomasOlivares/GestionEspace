@@ -39,7 +39,11 @@ int Construction::getTemps(){
     return ceil(temps*3600);
 }
 
-void Construction::setTemps(int nv){
+float Construction::getTempsHeure(){
+    return temps;
+}
+
+void Construction::setTemps(float nv){
     temps = nv;
 }
 

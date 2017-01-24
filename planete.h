@@ -8,7 +8,6 @@
 #include "cristal.h"
 #include "deuterium.h"
 #include "centraleSolaire.h"
-#include "centraleFusion.h"
 #include "hangarMetal.h"
 #include "hangarCristal.h"
 #include "reservoirDeut.h"

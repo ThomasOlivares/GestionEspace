@@ -43,14 +43,13 @@ void Planete::initBatiment(){
     bat[3] = new CentraleSolaire();
     bat[4] = new ChantierSpatial();
     bat[5] = new LaboRecherche();
-    bat[6] = new CentraleFusion();
-    bat[7] = new HangarMetal();
-    bat[8] = new HangarCristal();
-    bat[9] = new ReservoirDeut();
-    bat[10] = new UsineRobots();
-    bat[11] = new Silo();
-    bat[12] = new UsineNanites();
-    bat[13] = new Terraformeur();
+    bat[6] = new HangarMetal();
+    bat[7] = new HangarCristal();
+    bat[8] = new ReservoirDeut();
+    bat[9] = new UsineRobots();
+    bat[10] = new Silo();
+    bat[11] = new UsineNanites();
+    bat[12] = new Terraformeur();
 }
 
 void Planete::initRecherche(){
@@ -162,9 +161,7 @@ void Planete::decrementerTimers(int tps){
         bat[i]->construire(tps);
     }
     ChantierSpatial* chantier = (ChantierSpatial*)bat[4];
-    for (int i = 0; i<nbVaisseaux; i++){
-        chantier->construire(tps, i);
-    }
+    chantier->construire(tps);
     /*
     for (int i = 0; i<nbRecherches; i++){
         labo->getRecherche(i)->construire(tps);

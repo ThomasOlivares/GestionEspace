@@ -21,15 +21,17 @@ class ChantierSpatial : public Batiment
         void removeVaisseau(int num, int nb);
         Vaisseau* getVaisseau(int i);
         int enConstruction();
+        void construction();
         virtual void refresh();
         int vtoi(Vaisseau* vaisseau);
         int getNombre(Vaisseau* vaisseau);
-        void construire(int tps, int num);
+        void construire(int tps);
 
     protected:
     	Vaisseau* liste[nbVaisseaux];
     	int flotte[nbVaisseaux];
     	Bouton* self;
+        std::vector<Vaisseau*> commande;
 };
 
 #endif // CHANTIER_SPATIAL_H

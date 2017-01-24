@@ -4,10 +4,11 @@
 #include "chasseurLeger.h"
 #include "chasseurLourd.h"
 #include "croiseur.h"
+#include "defenseur.h"
 #include "vaisseauBataille.h"
 #include "traqueur.h"
 #include "bombardier.h"
-#include "destructeur.h"
+#include "destroyeur.h"
 #include "etoileDeLaMort.h"
 #include "petitTransporteur.h"
 #include "grandTransporteur.h"
@@ -29,7 +30,7 @@ ChantierSpatial::ChantierSpatial():Batiment(){
 	liste[3] = new VaisseauBataille();
 	liste[4] = new Traqueur();
 	liste[5] = new Bombardier();
-	liste[6] = new Destructeur();
+	liste[6] = new Destroyeur();
 	liste[7] = new EtoileDeLaMort();
 	liste[8] = new PetitTransporteur();
 	liste[9] = new GrandTransporteur();
@@ -37,6 +38,7 @@ ChantierSpatial::ChantierSpatial():Batiment(){
 	liste[11] = new Sonde();
 	liste[12] = new VaisseauColo();
 	liste[13] = new Recycleur();
+	liste[14] = new Defenseur();
 }
 
 ChantierSpatial::~ChantierSpatial(){
@@ -79,28 +81,44 @@ int ChantierSpatial::getNombre(Vaisseau* vaisseau){
 }
 
 Vaisseau* ChantierSpatial::getVaisseau(int i){
-	if (i < 0 || i > 13){
+	if (i < 0 || i > nbVaisseaux){
 		cout << "chantierSpatial::getVaisseau" << endl;
 		throw "error";
 	}
 	return liste[i];
 }
 
-void ChantierSpatial::construire(int tps, int num){
-	Vaisseau* v = liste[num];
-	if (v->getTemps() == 0){
-		return;
+void ChantierSpatial::construire(int tps){
+	if (commande.size() >= 1){
+		Vaisseau* v = commande[0];
+		if (v->getTempsHeure() == 0){
+			cout << "temps nul" << endl;
+			return;
+		}
+    	float uneHeure = pow(10,6)*3600;
+    	v->setTemps(v->getTempsHeure() - (float)tps/uneHeure);
+    	cout << v->getTempsHeure() << endl;
+    	if (v->getTemps() <= 0){
+        	v->setTemps(0);
+        	flotte[v->getNum()]++;
+        	construction();
+    	}
 	}
-    float uneHeure = pow(10,6)*3600;
-    v->setTemps(v->getTemps() - (float)tps/uneHeure);
-    if (v->getTemps() <= 0){
-        v->setTemps(0);
-        addVaisseau(v);
-    }
+}
+
+void ChantierSpatial::construction(){
+	for (int i = 0; i<commande.size()-1; i++){
+		commande[i] = commande[i+1];
+	}
+	delete(commande[commande.size()]);
+	commande.pop_back();
 }
 
 void ChantierSpatial::addVaisseau(Vaisseau* vaisseau){
-	flotte[vtoi(vaisseau)]++;
+	cout << "ajout" << endl;
+	vaisseau->setTemps((float)(vaisseau->getCoutMetal() 
+		+ vaisseau->getCoutCristal())/5000*(2/(float)vitesse));
+	commande.push_back(vaisseau);
 }
 
 void ChantierSpatial::removeVaisseau(int num, int nb){

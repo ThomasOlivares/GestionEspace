@@ -9,7 +9,6 @@ BATIMENTS=batiment.o \
 	cristal.o \
 	deuterium.o \
 	centraleSolaire.o \
-	centraleFusion.o \
 	hangarMetal.o \
 	hangarCristal.o \
 	reservoirDeut.o \
@@ -21,25 +20,26 @@ BATIMENTS=batiment.o \
 	terraformeur.o
 
 VAISSEAUX=vaisseau.o \
+	bombardier.o \
 	chasseurLeger.o \
 	chasseurLourd.o \
 	croiseur.o \
-	vaisseauBataille.o \
-	traqueur.o \
-	bombardier.o \
-	destructeur.o \
+	defenseur.o \
+	destroyeur.o \
 	etoileDeLaMort.o \
-	petitTransporteur.o \
 	grandTransporteur.o \
-	vaisseauColo.o \
-	sonde.o \
+	petitTransporteur.o \
 	recycleur.o \
-	satellite.o
+	satellite.o \
+	sonde.o \
+	traqueur.o \
+	vaisseauBataille.o \
+	vaisseauColo.o 
 
 ASTRE=astre.o \
-	planete.o \
 	flotte.o \
-
+	planete.o \
+	
 CLASSES=main.o \
 	window.o \
 	data.o \
@@ -101,9 +101,6 @@ deuterium.o : deuterium.cpp
 centraleSolaire.o : centraleSolaire.cpp
 	g++ -c centraleSolaire.cpp
 
-centraleFusion.o : centraleFusion.cpp
-	g++ -c centraleFusion.cpp
-
 hangarMetal.o : hangarMetal.cpp
 	g++ -c hangarMetal.cpp
 
@@ -158,8 +155,11 @@ traqueur.o : traqueur.cpp
 bombardier.o : bombardier.cpp
 	g++ -c bombardier.cpp
 
-destructeur.o : destructeur.cpp
-	g++ -c destructeur.cpp
+defenseur.o : defenseur.cpp
+	g++ -c defenseur.cpp
+
+destroyeur.o : destroyeur.cpp
+	g++ -c destroyeur.cpp
 
 etoileDeLaMort.o : etoileDeLaMort.cpp
 	g++ -c etoileDeLaMort.cpp
