@@ -155,22 +155,19 @@ void WindowPlanete::checkEvent(){
                 setVisible(0);
                 break;
             default :
-                switch (vue){
-                    case "général":
-                        checkEventBatiments(event);
-                        break;
-                    case "chantier":
-                        checkEventVaisseaux(event);
-                        break;
-                    case "recherche":
-                        checkEventRecherche(event);
-                        break;
-                    case "flotte":
-                        checkEventFlotte(event);
-                        break;
+                if (vue == "général"){
+                    checkEventBatiments(event);
+                }
+                else if (vue == "chantier"){
+                    checkEventVaisseaux(event);
+                }
+                else if (vue == "recherche"){
+                    checkEventRecherche(event);
+                }
+                else if (vue == "flotte"){
+                    checkEventFlotte(event);
                 }
                 isClicked(event.mouseButton.x, event.mouseButton.y);
-                break;
         }
     }
 }
